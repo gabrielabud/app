@@ -11,6 +11,16 @@ async function createConference({ name }) {
   }
 }
 
+async function list(tableName) {
+  try {
+    const response = await knex.select().from(`${tableName}`);
+    return response;
+  } catch (error) {
+    const errorHandled = errorHandler(error);
+    throw errorHandled;
+  }
+}
 module.exports = {
-  createConference
+  createConference,
+  list
 };

@@ -11,6 +11,17 @@ async function create({ name }) {
   }
 }
 
+async function list() {
+  try {
+    const response = await dbq.list('conferences');
+    return response;
+  } catch (error) {
+    const errorHandled = errorHandler(error);
+    throw errorHandled;
+  }
+}
+
 module.exports = {
-  create
+  create,
+  list
 };
