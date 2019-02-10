@@ -1,14 +1,19 @@
 const express = require('express');
 
 const router = express.Router();
-const { create, list } = require('../controllers/conferences');
+const { create, list } = require('../controllers/talks');
 
 router.post(
-  '/conferences',
+  '/conferences/:conferenceID/talks',
   async (req, res, next) => {
     try {
-      const { name } = req.body;
-      const response = await create({ name });
+      const { conferenceID } = req.params;
+      const {
+        title, description, startDatetime, endDatetime, maximumAttendance
+      } = req.body;
+      const response = await create({
+        conferenceID, title, description, startDatetime, endDatetime, maximumAttendance
+      });
       res.status(200).json(response);
       return next();
     } catch (error) {
@@ -18,7 +23,7 @@ router.post(
 );
 
 router.get(
-  '/conferences',
+  '/talks',
   async (req, res, next) => {
     try {
       const response = await list();
