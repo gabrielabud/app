@@ -3,7 +3,7 @@ exports.up = (knex, Promise) => {
   return Promise.all([
     knex.schema.createTable('conferences', (table) => {
       table.increments('id').primary();
-      table.string('name');
+      table.string('name').notNullable().unique();
     }),
     knex.schema.createTable('talks', (table) => {
       table.increments('id').primary();
@@ -41,6 +41,10 @@ exports.up = (knex, Promise) => {
 
 exports.down = (knex, Promise) => {
   return Promise.all([
-    knex.schema.dropTable('items')
+    knex.schema.dropTable('rsvps'),
+    knex.schema.dropTable('attendees'),
+    knex.schema.dropTable('speakers'),
+    knex.schema.dropTable('talks'),
+    knex.schema.dropTable('conferences')
   ]);
 };
