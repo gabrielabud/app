@@ -1,5 +1,4 @@
 const dbq = require('../db/queries');
-const { errorHandler } = require('../helper');
 
 async function create({
   conferenceID, title, description, startDatetime, endDatetime, maximumAttendance
@@ -10,8 +9,8 @@ async function create({
     });
     return response;
   } catch (error) {
-    const errorHandled = errorHandler(error);
-    throw errorHandled;
+    console.log('Error in talks controller #create');
+    throw error;
   }
 }
 
@@ -20,8 +19,8 @@ async function list() {
     const response = await dbq.list('talks');
     return response;
   } catch (error) {
-    const errorHandled = errorHandler(error);
-    throw errorHandled;
+    console.log('Error in talks controller #list');
+    throw error;
   }
 }
 
