@@ -22,7 +22,7 @@ describe('routes: RSVPS', () => {
 
   describe('POST /rsvps/talks/:talkID/attendees/:attendeeID', () => {
     context('SUCCESS: Send POST request to create a rsvp by an attendee for a talk', () => {
-      it('should return the resource created', (done) => {
+      it('should return the rsvp resource created', (done) => {
         chai.request(server)
           .post('/rsvps/talks/12/attendees/13')
           .end((err, res) => {

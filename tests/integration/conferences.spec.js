@@ -24,7 +24,7 @@ describe('routes: CONFERENCES', () => {
 
   describe('POST /conferences', () => {
     context('SUCCESS: Send POST request to create a conference', () => {
-      it('should return the resource created', (done) => {
+      it('should return the conference resource created', (done) => {
         chai.request(server)
           .post('/conferences')
           .send({ name: 'Future of Fintech' })

@@ -23,7 +23,7 @@ describe('routes: ATTENDEES', () => {
 
   describe('POST /conferences/:conferenceID/attendees', () => {
     context('SUCCESS: Send POST request to create an attendee', () => {
-      it('should return the resource created', (done) => {
+      it('should return the attendee resource created', (done) => {
         chai.request(server)
           .post('/conferences/2/attendees')
           .send({

@@ -23,7 +23,7 @@ describe('routes: TALKS', () => {
 
   describe('/conferences/:conferenceID/talks', () => {
     context('SUCCESS: Send POST request to create a talk', () => {
-      it('should return the resource created', (done) => {
+      it('should return the talk resource created', (done) => {
         chai.request(server)
           .post('/conferences/2/talks')
           .send({
